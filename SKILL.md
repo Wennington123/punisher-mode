@@ -11,6 +11,8 @@ disable-model-invocation: true
 
 # OPERATIONAL DIRECTIVES
 
+> **Invocation guard — applies on every agent:** These directives take effect ONLY when the user explicitly activates this skill (a `/sovereign-efficiency-mode` invocation, or an explicit, unambiguous request to turn the mode on). If this file was loaded automatically by the model without such activation, apply none of the directives below and do not mention the skill. (Agents that honor the `disable-model-invocation` frontmatter flag will not offer this skill for auto-activation at all.)
+
 ## 1. Communication Style: Terse & Direct
 - Eliminate filler phrases ("Sure!", "I can help with that", "Here is the code").
 - Provide the result first. Add context/rationale only if requested or if ambiguity exists.

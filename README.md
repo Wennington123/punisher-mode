@@ -1,6 +1,6 @@
 # sovereign-efficiency-mode
 
-An [Agent Skill](https://agentskills.io) that activates a **high-autonomy, low-friction operational mode** for [Command Code](https://commandcode.ai). Result-first terse communication, immediate execution of clear low-risk tasks, semantic intent over literal syntax — and it is **opt-in only**: it never auto-activates.
+An [Agent Skill](https://agentskills.io) that activates a **high-autonomy, low-friction operational mode** in any spec-compliant agent — [Command Code](https://commandcode.ai), Claude Code, OpenAI Codex CLI, Cursor, Gemini CLI, GitHub Copilot, OpenCode, and 40+ others. Result-first terse communication, immediate execution of clear low-risk tasks, semantic intent over literal syntax — and it is **opt-in only**: it never auto-activates.
 
 > This skill changes *how* the agent works in a session. It does not add tools, grant permissions, or raise limits — it lowers the confirmation and verbosity overhead.
 
@@ -23,37 +23,32 @@ Hard constraints baked into the skill:
 
 ## Install
 
-Requires [Command Code](https://commandcode.ai) (or any agent implementing the Agent Skills standard).
+The skill follows the [Agent Skills open standard](https://agentskills.io) (governed by the Linux Foundation's Agentic AI Foundation), so it works with any agent that implements it.
 
-### Per-user (all projects)
-
-```bash
-git clone https://github.com/Wennington123/sovereign-efficiency-mode \
-  ~/.commandcode/skills/sovereign-efficiency-mode
-```
-
-### Per-project (share with the repo)
+### One-liner (any agent)
 
 ```bash
-git clone https://github.com/Wennington123/sovereign-efficiency-mode \
-  .commandcode/skills/sovereign-efficiency-mode
+npx skills add Wennington123/sovereign-efficiency-mode
 ```
 
-### Manual
+Installs into whichever agents you have, with an interactive prompt to pick them.
 
-Copy or symlink this directory to any of the skill locations:
+### Manual — known skill locations
 
-| Location | Scope |
-|----------|-------|
-| `~/.commandcode/skills/sovereign-efficiency-mode/` | this user, every project |
-| `.commandcode/skills/sovereign-efficiency-mode/` (project root) | everyone in this repo |
-| `~/.agents/skills/sovereign-efficiency-mode/` | shared with other Agent-Skills tools |
+- **Command Code**: `~/.commandcode/skills/` (personal) · `.commandcode/skills/` (project)
+- **Claude Code**: `~/.claude/skills/` (personal) · `.claude/skills/` (project)
+- **OpenAI Codex CLI**: `~/.codex/skills/`
+- **Cursor**: `~/.cursor/skills/`
+- **OpenCode**: `.opencode/skills/`
+- **Shared convention** (read by Gemini CLI and other spec-compliant agents): `~/.agents/skills/` (personal) · `.agents/skills/` (project)
 
-Verify it registered:
+Clone into the target agent's skills directory:
 
 ```bash
-cmd skills list   # or open /skills in the TUI
+git clone https://github.com/Wennington123/sovereign-efficiency-mode <skills-dir>/sovereign-efficiency-mode
 ```
+
+Verify it registered: `cmd skills list` / `/skills` (Command Code), `/skills` (Claude Code), or ask the agent to list its skills.
 
 ## Usage
 
@@ -61,7 +56,7 @@ cmd skills list   # or open /skills in the TUI
 /sovereign-efficiency-mode
 ```
 
-- **Only activation path.** The skill's frontmatter sets `disable-model-invocation: true`, so the model never sees it and can never auto-load it. A plain "be more efficient" request will *not* trigger it.
+- **Opt-in only, on every agent.** In Command Code, the frontmatter flag `disable-model-invocation: true` guarantees the model never sees the skill — only `/sovereign-efficiency-mode` runs it. Other agents ignore that flag, so the skill body carries a portable invocation guard instead: if the skill is loaded without an explicit user activation, none of its directives apply.
 - The mode stays active for the rest of the session.
 - End it anytime: say "back to normal mode" (or start a new session).
 
