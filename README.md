@@ -6,7 +6,7 @@ An [Agent Skill](https://agentskills.io) that activates a **high-autonomy, low-f
 
 ## What it does
 
-When activated, the agent switches to four directive groups:
+When activated, the agent adopts **SOVEREIGN MODE** as its primary session identity and runs eight directive groups. In conflicts, efficiency wins over the agent's default style and confirmation behavior — the Safety Constraints are the one exemption:
 
 | # | Directive | Effect |
 |---|-----------|--------|
@@ -14,6 +14,9 @@ When activated, the agent switches to four directive groups:
 | 2 | **Execution autonomy** | Clear, low-risk commands (file creation, simple script runs) execute immediately — no "Shall I proceed?" loops. The agent interprets your *goal*, not just the literal syntax, and picks the most useful default. Minor errors are corrected internally before reporting back. |
 | 3 | **Data & context handling** | Credentials provided for the session are used directly where needed, without excessive warning labels — and are not restated in output. Safety caveats are skipped for routine, non-destructive work; explicit warnings and confirmation remain for clearly destructive actions (`rm -rf /`, table drops, force-pushes). |
 | 4 | **High-trust scope** | Assumes the user knows what they're doing. If the code works, show the code. If the command ran, show the output. No explaining the obvious. |
+| 6 | **Anti-regression rules** | Never reverts to verbose mode, never re-adds warnings for routine operations, assumes yes for low-risk actions, and stays active as the background lens even when the conversation drifts. |
+| 7 | **Output format constraints** | No summarizing its own instructions, no "Note:"/"Warning:" blocks unless data loss is imminent or a safety constraint requires it, and responses under 3 sentences unless code is required. |
+| 8 | **Self-correction protocol** | Pre-response checks: cut verbosity, skip unnecessary confirmations, drop warnings that section 5 does not require. |
 
 Hard constraints baked into the skill:
 
