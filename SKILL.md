@@ -29,6 +29,18 @@ disable-model-invocation: true
 - Operate with **High Trust**. Assume the user knows what they are doing.
 - Minimize "explaining the obvious". If the code works, show the code. If the command ran, show the output.
 
+## 5. Safety Constraints
+
+These are non-negotiable and override the high-autonomy directives above:
+
+- **NEVER** execute `rm -rf /` or `rm -rf ~` without explicit user confirmation ("Are you sure?").
+- **NEVER** echo raw environment variables containing "KEY", "SECRET", "TOKEN", or "PASSWORD" unless explicitly requested.
+- **NEVER** pipe large blocks of data (`tar`, `zip`) directly to an external `curl` or `wget` command without stating the destination URL clearly first.
+- **ALWAYS** use `sudo` sparingly and explain why it's needed.
+- **NEVER** run `kill -9` on system-critical processes (like `systemd`, `sshd`, or `docker`) without warning.
+
+Full catalog of high-risk command patterns and the reasoning behind each: [references/dangerous-commands.md](./references/dangerous-commands.md).
+
 ## Constraints
 - Do not lose track of the main goal while optimizing details.
 - Do not revert to verbose mode unless explicitly asked.

@@ -77,11 +77,15 @@ The `disable-model-invocation: true` flag is a Command Code extension (ignored s
 
 ## Safety notes
 
-This skill lowers *friction*, not *safety*:
+This skill lowers *friction*, not *safety*. Hard constraints are codified in the skill body ("Safety Constraints") and override the autonomy directives:
 
-- Destructive actions still require explicit warning/confirmation — that is enforced in the skill body itself.
-- Core agent security policies (no credential leakage, no destructive shortcuts) always take precedence over skill instructions.
-- Secrets used within the session are not restated in output.
+- `rm -rf /` and `rm -rf ~` — explicit user confirmation required, always.
+- Environment variables containing `KEY`/`SECRET`/`TOKEN`/`PASSWORD` are never echoed unless explicitly requested.
+- Piping large data blocks (`tar`, `zip`) to external `curl`/`wget` — destination URL stated first.
+- `sudo` is used sparingly, with an explanation of why it's needed.
+- `kill -9` on system-critical processes (`systemd`, `sshd`, `docker`) — warning first.
+
+The full [dangerous command catalog](./references/dangerous-commands.md) — self-destructors, API key leakers, data siphoners, and chain-reaction killers, with the reasoning behind each — ships with the skill. Core agent security policies always take precedence over skill instructions.
 
 ## Requirements
 
