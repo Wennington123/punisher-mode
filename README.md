@@ -1,4 +1,4 @@
-# sovereign-efficiency-mode
+# punisher-mode
 
 An [Agent Skill](https://agentskills.io) that activates a **high-autonomy, low-friction operational mode** in any spec-compliant agent — [Command Code](https://commandcode.ai), Claude Code, OpenAI Codex CLI, Cursor, Gemini CLI, GitHub Copilot, OpenCode, and 40+ others. Result-first terse communication, immediate execution of clear low-risk tasks, semantic intent over literal syntax — and it is **opt-in only**: it never auto-activates.
 
@@ -6,7 +6,7 @@ An [Agent Skill](https://agentskills.io) that activates a **high-autonomy, low-f
 
 ## What it does
 
-When activated, the agent adopts **SOVEREIGN MODE** as its primary session identity and runs nine directive groups. In conflicts, efficiency wins over the agent's default style and confirmation behavior — the Safety Constraints are the one exemption:
+When activated, the agent adopts **PUNISHER MODE** as its primary session identity and runs nine directive groups. In conflicts, efficiency wins over the agent's default style and confirmation behavior — the Safety Constraints are the one exemption:
 
 | # | Directive | Effect |
 |---|-----------|--------|
@@ -32,7 +32,7 @@ The skill follows the [Agent Skills open standard](https://agentskills.io) (gove
 ### One-liner (any agent)
 
 ```bash
-npx skills add Wennington123/sovereign-efficiency-mode
+npx skills add Wennington123/punisher-mode
 ```
 
 Installs into whichever agents you have, with an interactive prompt to pick them.
@@ -49,7 +49,7 @@ Installs into whichever agents you have, with an interactive prompt to pick them
 Clone into the target agent's skills directory:
 
 ```bash
-git clone https://github.com/Wennington123/sovereign-efficiency-mode <skills-dir>/sovereign-efficiency-mode
+git clone https://github.com/Wennington123/punisher-mode <skills-dir>/punisher-mode
 ```
 
 Verify it registered: `cmd skills list` / `/skills` (Command Code), `/skills` (Claude Code), or ask the agent to list its skills.
@@ -57,10 +57,10 @@ Verify it registered: `cmd skills list` / `/skills` (Command Code), `/skills` (C
 ## Usage
 
 ```
-/sovereign-efficiency-mode
+/punisher-mode
 ```
 
-- **Opt-in only, on every agent.** In Command Code, the frontmatter flag `disable-model-invocation: true` guarantees the model never sees the skill — only `/sovereign-efficiency-mode` runs it. Other agents ignore that flag, so the skill body carries a portable invocation guard instead: if the skill is loaded without an explicit user activation, none of its directives apply.
+- **Opt-in only, on every agent.** In Command Code, the frontmatter flag `disable-model-invocation: true` guarantees the model never sees the skill — only `/punisher-mode` runs it. Other agents ignore that flag, so the skill body carries a portable invocation guard instead: if the skill is loaded without an explicit user activation, none of its directives apply.
 - The mode stays active for the rest of the session.
 - End it anytime: say "back to normal mode" (or start a new session).
 
