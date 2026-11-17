@@ -74,7 +74,7 @@ Skills use a three-tier progressive disclosure model:
 
 1. **Metadata** — `name` + `description`, always visible to the loader.
 2. **Body** — `SKILL.md` loads on activation; this is the full directive set.
-3. **Supporting files** — loaded on demand (none needed here; the whole skill is one file).
+3. **Supporting files** — loaded on demand (this skill ships one: [references/dangerous-commands.md](./references/dangerous-commands.md), linked from the Safety Constraints section).
 
 The `disable-model-invocation: true` flag is a Command Code extension (ignored safely by other tools): the skill stays listed in `cmd skills list` and the slash menu, but is withheld from the model's auto-invocation context.
 
